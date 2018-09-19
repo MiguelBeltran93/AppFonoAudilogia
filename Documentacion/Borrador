@@ -1,0 +1,621 @@
+
+
+Contextualización
+versión 1 elaborado por: Miguel Ángel Beltrán Pérez 
+
+
+
+ 
+
+
+
+Desarrollo e
+implementación de aplicación sensorial para una independencia de aprendizaje
+por parte de los estudiantes con limitaciones fonoaudiológicas
+
+
+
+Desarrollo e implementación de aplicación que genere independencia de
+aprendizaje de estudiantes con limitaciones fonoaudiológicas. 
+
+
+
+ 
+
+
+
+A tener en cuenta:
+
+
+
+Se asignan intérpretes que solo están en la
+clase y se dificulta hacer actividades extra clase
+
+Si el intérprete entiende mal y le transmite mal
+la información al estudiante se genera una especie de teléfono roto que
+perjudica al estudiante (Teléfono roto
+entre profesor interprete y estudiante).
+
+En caso de querer acceder a los servicios de la
+universidad como biblioteca se dificulta la consulta con el personal, pues este
+no está capacitado. 
+
+Es un tema importante de inclusión para personas
+con las limitaciones mencionadas que quieren un ambiente donde se les trate con
+mayor naturalidad.
+
+La tecnología se presta para abordar esta
+problemática, pero sus enfoques son dispersos y muy ambiguos.
+
+ 
+
+Problemática
+
+La
+población estudiantil con limitaciones fonoaudiológicas ha venido creciendo en
+los últimos años, dada esta situación las entidades educativas han optado por
+una solución “a medias” como se le diría coloquialmente, la cual fue asignar un
+intérprete que esté presente solo en las clases. 
+
+Esta
+población, tienen una gran dificultad para el acceso a los diferentes servicios
+que ofrece la universidad (como lo es la biblioteca, bienestar universitario,
+restaurante, o alguna diligencia en la oficinas administrativos), pues el
+personal de la universidad no cuenta en su totalidad con la capacitación
+necesaria para atenderlos y los intérpretes no prestan su acompañamiento para
+las actividades que se realicen dentro del diario vivir académico de cada uno (
+reunirse con compañeros, preparar una exposición desarrollar un proyecto en
+grupo etc.) 
+
+ 
+
+y
+genera una dependencia directa con el asistente para tener acceso al conocimiento
+impartido dentro del aula de clase, esta situación es un gran problema para el
+desempeño de estos estudiantes, pues si el intérprete está ausente será una
+clase perdida; además que no se garantiza que el estudiante aprenda como se
+supone que debe hacerlo, puesto que si el intérprete no entiende, o entiende
+mal, transmitirá la información incorrecta al estudiante, así él, tenga la
+capacidad de aprender correctamente la temática dirigida en clase, lo cual es
+la problemática mayúscula que hay que abordar de una manera urgente y
+cuidadosa, pues está en riesgo no solo el aprendizaje y rendimiento del
+estudiante, sino que también de estos factores se abstraen muchas conclusiones
+que juzgan la metodología o la preparación profesional de los docentes.
+
+ 
+
+La
+población estudiantil con limitaciones fonoaudiológicas ha venido creciendo en
+los últimos años, dada esta situación las entidades educativas han optado por asignar
+un intérprete que esté presente en clase, pero no prestan su acompañamiento en actividades
+que se realicen extra clase (reunirse con compañeros, preparar una exposición,
+etc.) esta
+situación genera una dependencia directa con el asistente para tener acceso al
+conocimiento impartido dentro del aula de clase y gran dificultad para el acceso
+a los servicios que ofrece la universidad (biblioteca, bienestar universitario,
+o alguna diligencia en oficinas administrativas), pues el personal de la
+universidad no cuenta en su totalidad con la capacitación necesaria para
+atenderlos, esta situación es un gran problema para el desempeño de estos
+estudiantes, pues si el intérprete está ausente será una clase perdida; además
+que no se garantiza que el estudiante aprenda correctamente, puesto que si el
+intérprete no entiende, o entiende mal, transmitirá la información incorrecta
+al estudiante, así él, tenga la capacidad de aprender correctamente la temática
+dirigida en clase, lo cual es la problemática mayúscula que hay que abordar de
+una manera urgente y cuidadosa, pues está en riesgo no solo el aprendizaje y
+rendimiento del estudiante, sino que también de estos factores se abstraen
+muchas conclusiones que juzgan la metodología o la preparación profesional de
+los docentes.
+
+ 
+
+ 
+
+ 
+
+Propuesta
+Solución.
+
+ 
+
+¿A
+qué sector beneficiaria?
+
+Toda
+la población universitaria que tenga limitaciones Fonoaudiológicas.
+
+¿Cómo
+se solucionaría?
+
+Desarrollo
+e implementación de aplicación móvil que permita cerrar la brecha de
+comunicación, mediante la interpretación en tiempo real del diálogo de los
+profesores, compañeros (y demás personas de vital importancia para el correcto
+desarrollo de un aprendizaje como profesional) y el estudiante con limitaciones
+fonoaudiológicas.
+
+La
+idea es que la aplicación permita presentar a manera de texto lo que el docente
+este explicando  en clase, permitiendo
+una buena comunicación y fiabilidad en la transferencia de la información sin
+alteraciones, logrando una independencia de intérpretes y facilitar la
+interacción con el docente, la cual tendrá una función donde el estudiante digitara
+sus preguntas, dudas o comentarios, con el docente que tendrá un auricular
+donde escuchara lo digitado de forma inmediata y también servirá como micrófono
+receptor de su voz.
+
+¿Alcance?
+
+
+Siendo
+aprobada la propuesta se dará el inicio de la fase de investigación
+(acompañamiento de persona con limitación fonoaudiólogica, Fonoaudiologos y
+expertos en inclusión para personas con limitaciones) una vez terminada se
+procederá al diseño, desarrollo y finalmente la implementación de una versión
+1.0 de la aplicación.
+
+ 
+
+¿Como
+podría funcionar? 
+
+Caso
+1: uso de un solo celular.
+
+El
+estudiante tiene una aplicación que se conecta con un auricular bluetooth que
+tendrá el docente.
+
+El docente habla y la aplicación escucha mediante el
+auricular y va presentado en texto lo que se esté hablando; el estudiante podrá
+enviar mensajes de texto mediante la aplicación para comunicarse con el docente
+y la misma pasara a voz lo escrito al auricular todo en tiempo real para no
+tener confusiones ni mal entendidos.
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+  Aplicación
+
+
+  
+  
+  Inicio
+  de sesión 
+
+
+  
+  
+  Se
+  podrá tener un usuario para el uso de la aplicación que permita llevar un
+  control de información por persona para mejorar realimentaciones q nos
+  permitan mejorar el funcionamiento de la aplicación 
+
+
+  
+  
+   
+
+
+  
+ 
+ 
+  
+   
+
+
+  
+  
+  Único
+  modulo en función de interprete
+
+
+   
+
+
+  
+  
+  La
+  pantalla será muy intuitiva y permitirá ejecutar dos acciones simultáneamente
+  que será trasmitir información a un auricular en audio y recibir información
+  para presentarlo a forma de texto.
+
+
+   
+
+
+  
+  
+   
+
+
+  
+ 
+ 
+  
+   
+
+
+  
+  
+   
+
+
+  
+  
+  Transmisión
+
+
+  
+  
+  Se
+  presentará una interfaz donde el estudiante podrá escribir y enviar lo que
+  quiera transmitir en tiempo real, al docente presente.
+
+
+  
+ 
+ 
+  
+   
+
+
+  
+  
+   
+
+
+  
+  
+  Recepción
+
+
+  
+  
+  En
+  el momento que el auricular este recibiendo voz, la aplicación le presentara
+  en texto, al estudiante lo que se esté hablando en ese momento.
+
+
+  
+ 
+ 
+  
+   
+
+
+  
+  
+  Módulo
+  de configuración 
+
+
+  
+  
+  Donde
+  se podrán guardar mensajes pre establecidos que sean más comunes y permitan
+  agilizar el proceso de comunicación 
+
+
+  
+  
+   
+
+
+  
+ 
+
+
+
+En este caso solo bastara con la aplicación alojada en el
+dispositivo del estudiante y podrá interactuar donde se encuentre solo con el
+dispositivo y el auricular.
+
+
+
+Caso 2: La aplicación tendrá dos roles.
+
+
+
+Estudiante: en usuario de la aplicación se
+presentará en texto todo lo que esté hablando el profesor y podrá escribir en
+caso de querer comunicarse con el docente.
+
+Docente: para este rol que será el nodo de
+conexión en caso de tener más de un estudiante con estas limitaciones en el
+aula de clase, enviara la información a cada persona conectada y recibirá los
+comentarios en tiempo real por parte de los estudiantes y los pasara a voz para
+que pueda escuchar las inquietudes y atender cada una de manera oportuna.
+
+En
+este caso se tendrá la aplicación alojada en mínimo dos dispositivos para el
+estudiante con limitación y la persona con quien vaya a interactuar.   
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+  Aplicación 
+
+
+  
+  
+  Inicio de sesión
+
+
+  
+  
+  Se podrá tener un usuario para el uso de la aplicación que
+  permita llevar un control de información por persona para mejorar
+  realimentaciones q nos permitan mejorar el funcionamiento de la aplicación
+
+
+  
+ 
+ 
+  
+   
+
+
+  
+  
+  Modulo Profesor 
+
+
+  
+  
+  El celular será el nodo principal, que permitirá a uno o
+  varios estudiantes conectarse a la clase y usara un auricular para él envió
+  de la voz a todos quienes estén conectados a la clase y hará recepción de los
+  comentarios de cada estudiante. 
+
+
+  
+ 
+ 
+  
+   
+
+
+  
+  
+  Modulo Estudiante 
+
+
+  
+  
+  En este usuario la aplicación presentara una interfaz
+  amigable que permita presentar la voz del docente en texto para que el
+  estudiante pueda entender en tiempo real, lo expuesto en clase;
+  adicionalmente una opción que le permita al estudiante escribir comentario,
+  preguntas o inquietudes que el docente escuchara en su auricular
+  inmediatamente el estudiante haga envió de la misma.
+
+
+   
+
+
+  
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+Aplicaciones relacionadas con la
+temática a tratar
+
+
+
+ 
+
+
+
+Esta aplicación es muy cercana al trabajo
+que se quiere desarrollar, pero primero no está disponible en Colombia, se
+tiene q realizar un registro previo de personas a escuchar, Solo está en inglés
+y según las referencias de la PlayStore tiene varios fallos funcionales.
+
+
+
+Ava: Ava es una gran opción para
+las personas sordas y con dificultades auditivas para entender y participar en
+conversaciones con personas que pueden oír, en cualquier momento y en cualquier
+lugar. La aplicación utiliza tecnologías de reconocimiento de voz para mostrar
+una transcripción en tiempo real de la discusión, aprovechando el poder de los
+teléfonos inteligentes.
+
+
+
+Esta aplicación también se acerca a la idea
+planteada, pero tiene varias mejoras funcionales y se enfoca más al lenguaje de
+señas y no al texto que a mi parecer permite evitar malos entendidos en
+cuestiones de contexto 
+
+
+
+Háblame: Esta aplicación
+facilita conversaciones con personas sordas sin tener conocimiento del lenguaje
+de señas. La plataforma trabaja por medio de reconocimiento de voz convirtiendo
+esa voz en un video de señas para quienes no pueden oír.
+
+
+
+DiLS:
+aplicación que permite realizar llamadas por medio de un intérprete q traduce
+las dos partes
+
+
+
+Visualfy.
+Esta aplicación móvil pretende derribar las barreras sociales de las personas
+con discapacidad auditiva. Gracias a Visualfy, los usuarios pueden adaptar
+visual y sensorialmente cualquier notificación en sus smartphones y tablets.
+
+
+
+Prometteo.
+En este mundo en el que expresarse a través de internet parece un requisito
+fundamental, Prometteo se presenta como la red social para quienes tienen
+dificultades auditivas.
+
+
+
+uSound.
+Pensada tanto para iOS como para Android, esta app es usada por hipoacúsicos en
+más de 150 países. Además de proporcionar un test auditivo, uSound funciona
+como un audifono digital y permite a quien lo utiliza escuchar sus canciones
+favoritas adaptadas a su nivel de audición y respetando la salud del oído.
+
+
+
+Signslator.
+Facilitar la comunicación entre oyentes y personas sordas es el objetivo de
+este primer traductor de lengua de signos española. Signslator es muy fácil de
+usar si respetas las reglas ortográficas: escribes la frase que necesitas
+traducir en la aplicación y su traductora virtual se encarga del resto.
+
+
+
+Pedius:
+Es un sistema de comunicación que permite a las personas sordas realizar
+llamadas telefónicas utilizando las tecnologías de reconocimiento y síntesis de
+voz; facilitará la gestión de las llamadas telefónicas a personas con
+discapacidad auditiva.
+
+
+
+ 
+
+
+
+Enlaces…
+
+
+
+https://www.audifon.es/apps-personas-sordas
+
+
+
+https://www.elpais.com.uy/vida-actual/app-ayuda-comunidad-sorda-comunicarse-demas.html
+
+
+
+http://mayormente.com/7-apps-para-personas-con-problemas-de-audicion/
+
+
+
+https://apps.co/comunidad/ver/1139/hablame/
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
