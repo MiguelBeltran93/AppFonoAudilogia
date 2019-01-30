@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SinSeña</string>
+    <string name="register">Registro</string>
+    <string name="Login">Inicar sesion</string>
+</resources>
