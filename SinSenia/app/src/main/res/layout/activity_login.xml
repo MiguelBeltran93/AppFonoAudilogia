@@ -34,6 +34,7 @@
 
         <ImageView
             android:id="@+id/imageView3"
+            android:onClick="close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -127,6 +128,7 @@
         android:text="Registrarme"
         android:textColor="@color/gray_light"
         android:textSize="18sp"
+        android:onClick="register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -143,6 +145,7 @@
         android:text="@string/Login"
         android:textColor="@color/gray_light"
         android:textSize="18sp"
+        android:onClick="inicioSesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />

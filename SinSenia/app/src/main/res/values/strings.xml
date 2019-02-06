@@ -2,4 +2,11 @@
     <string name="app_name">SinSeña</string>
     <string name="register">Registro</string>
     <string name="Login">Inicar sesion</string>
+    <string name="create_subject">Crear Materia</string>
+    <string name="name_subject">Nombre</string>
+    <string name="teacher">Profesor</string>
+    <string name="color">Color</string>
+    <string name="clases">Clase</string>
+    <string name="add_subject">Crear</string>
+    <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod magna mi, vel vestibulum elit fermentum in.</string>
 </resources>

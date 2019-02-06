@@ -12,10 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/gray_light">
-
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="onBackPresed"
+            app:srcCompat="@drawable/icon_back" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -80,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameUser" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textLayoutPassword"
+        android:id="@+id/textLayoutPasswordRegistro"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/height_edit_tex"
         android:layout_marginStart="8dp"
@@ -107,7 +118,7 @@
 
     <android.support.design.widget.TextInputLayout
 
-        android:id="@+id/textInputLayout"
+        android:id="@+id/textInputLayoutRegistro"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/height_edit_tex"
         android:layout_marginStart="8dp"
@@ -116,7 +127,7 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLayoutPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textLayoutPasswordRegistro"
         app:passwordToggleEnabled="true">
 
         <EditText
@@ -141,7 +152,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutRegistro">
 
         <Switch
             android:id="@+id/Estudiante"
@@ -164,7 +175,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <TextView
-        android:id="@+id/button"
+        android:id="@+id/buttonRegistro"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -172,6 +183,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/custom_button"
         android:gravity="center"
+        android:onClick="showAlert"
         android:text="Registrarme"
         android:textColor="@color/gray_light"
         android:textSize="18sp"
