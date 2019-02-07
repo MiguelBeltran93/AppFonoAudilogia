@@ -10,14 +10,41 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import sinsenia.miguelbeltran.com.sinsenia.models.User;
+import sinsenia.miguelbeltran.com.sinsenia.network.Responses;
+import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
 
 public class RegisterUserActivity extends AppCompatActivity {
+
+    @BindView(R.id.nameUser)
+    TextView name;
+    @BindView(R.id.correoUser)
+    TextView email;
+    @BindView(R.id.Estudiante)
+    Switch rolEstudent;
+    @BindView(R.id.switch2)
+    Switch rolTeacher;
+
+
+    private ArrayList<User> user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
+
+        ButterKnife.bind(this);
 
         int option = getIntent().getExtras().getInt("option");
         if(option==1){
@@ -32,7 +59,38 @@ public class RegisterUserActivity extends AppCompatActivity {
 
             TextInputLayout passwordCon =findViewById(R.id.textInputLayoutRegistro);
             passwordCon.setVisibility(View.GONE);
+
+            loadProfile();
         }
+    }
+
+    public void loadProfile(){
+
+        RestAPI.getInstance().getUser().enqueue(new Callback<Responses.User>() {
+            @Override
+            public void onResponse(Call<Responses.User> call, Response<Responses.User> response) {
+
+                if(response.isSuccessful()){
+                    user = response.body().getUser();
+                    name.setText(user.get(0).getNameUser());
+                    name.setEnabled(false);
+                    email.setText(user.get(0).getEmail());
+                    email.setEnabled(false);
+                    if (user.get(0).getRol().equals("Estudiante")){
+
+                        rolEstudent.setChecked(true);
+                        rolEstudent.setClickable(false);
+                        rolTeacher.setClickable(false);
+                    }
+                    Toast.makeText(getApplicationContext(),user.get(0).getRol(),Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Responses.User> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"fallo.........",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void onBackPresed(View button){

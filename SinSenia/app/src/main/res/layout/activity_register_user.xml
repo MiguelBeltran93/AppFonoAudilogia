@@ -65,6 +65,7 @@
         android:layout_marginEnd="8dp"
         android:ems="12"
         android:hint="Nombre completo"
+
         android:inputType="text"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
@@ -159,9 +160,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:text="Estudiante "
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <Switch
             android:id="@+id/switch2"
