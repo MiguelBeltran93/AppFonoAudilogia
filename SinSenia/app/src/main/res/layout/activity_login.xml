@@ -59,7 +59,7 @@
         app:srcCompat="@drawable/icon_app" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/userEmailLogin"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/height_edit_tex"
         android:layout_marginStart="8dp"
@@ -85,11 +85,11 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/userEmailLogin"
         app:passwordToggleEnabled="true">
 
         <EditText
-            android:id="@+id/passwordUser"
+            android:id="@+id/passwordUserLogin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_edit_tex"
             android:background="@drawable/custom_edit_text"

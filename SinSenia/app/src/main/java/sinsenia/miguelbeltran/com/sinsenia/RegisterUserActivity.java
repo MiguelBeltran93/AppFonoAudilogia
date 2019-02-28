@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import sinsenia.miguelbeltran.com.sinsenia.models.SinSenaApp;
 import sinsenia.miguelbeltran.com.sinsenia.models.User;
 import sinsenia.miguelbeltran.com.sinsenia.network.Responses;
 import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
@@ -28,16 +30,18 @@ import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
 public class RegisterUserActivity extends AppCompatActivity {
 
     @BindView(R.id.nameUser)
-    TextView name;
+    EditText name;
     @BindView(R.id.correoUser)
-    TextView email;
+    EditText email;
+    @BindView(R.id.passwordUser)
+    EditText password;
     @BindView(R.id.Estudiante)
     Switch rolEstudent;
     @BindView(R.id.switch2)
     Switch rolTeacher;
 
 
-    private ArrayList<User> user;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,35 +63,63 @@ public class RegisterUserActivity extends AppCompatActivity {
 
             TextInputLayout passwordCon =findViewById(R.id.textInputLayoutRegistro);
             passwordCon.setVisibility(View.GONE);
-
             loadProfile();
         }
     }
 
+    public void resgisterUser(View button){
+        String n=name.getText().toString();
+        String c=password.getText().toString();
+       String r=null;
+        String em=email.getText().toString();
+
+        if (rolEstudent.isChecked()){
+            r="Estudiante";
+        }else if(rolTeacher.isChecked()){
+            r="Profesor";
+        }
+        RestAPI.getInstance().registerUser(n,c,r,em).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                   alertLogin();
+                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"fallo Registrado",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     public void loadProfile(){
 
-        RestAPI.getInstance().getUser().enqueue(new Callback<Responses.User>() {
+        RestAPI.getInstance().getUser(SinSenaApp.getInstance().getID()).enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<Responses.User> call, Response<Responses.User> response) {
+            public void onResponse(Call<User> call, Response<User> response) {
 
                 if(response.isSuccessful()){
-                    user = response.body().getUser();
-                    name.setText(user.get(0).getNameUser());
+                    user = response.body();
+                    name.setText(user.getNameUser());
+                    email.setText(user.getEmail());
                     name.setEnabled(false);
-                    email.setText(user.get(0).getEmail());
                     email.setEnabled(false);
-                    if (user.get(0).getRol().equals("Estudiante")){
+                    if (user.getRol().equals("Estudiante")){
 
                         rolEstudent.setChecked(true);
                         rolEstudent.setClickable(false);
                         rolTeacher.setClickable(false);
+                    }else if (user.getRol().equals("Profesor")){
+                        rolTeacher.setChecked(true);
+                        rolEstudent.setClickable(false);
+                        rolTeacher.setClickable(false);
                     }
-                    Toast.makeText(getApplicationContext(),user.get(0).getRol(),Toast.LENGTH_LONG).show();
+
                 }
             }
 
             @Override
-            public void onFailure(Call<Responses.User> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"fallo.........",Toast.LENGTH_LONG).show();
             }
         });
@@ -97,9 +129,7 @@ public class RegisterUserActivity extends AppCompatActivity {
       onBackPressed();
     }
 
-    public void showAlert(View button){
-        alertLogin();
-    }
+
     public void alertLogin(){
         View v = LayoutInflater.from(this).inflate(R.layout.alert_view, null);
 
@@ -117,6 +147,7 @@ public class RegisterUserActivity extends AppCompatActivity {
         btnVale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alertDialog.dismiss();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }

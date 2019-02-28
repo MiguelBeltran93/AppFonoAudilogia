@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import sinsenia.miguelbeltran.com.sinsenia.adapter.ListSubjectAdapter;
+import sinsenia.miguelbeltran.com.sinsenia.models.SinSenaApp;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -20,15 +21,27 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void viewClass(View button){
-        Intent viewClass = new Intent(getApplicationContext(), ListSubjectActivity.class);
-        startActivity(viewClass);
+        String rol=SinSenaApp.getInstance().getROL();
+        if (rol.equals("Estudiante")) {
+            Intent viewClass = new Intent(getApplicationContext(), ListSubjectActivity.class);
+            startActivity(viewClass);
+        }else if(rol.equals("Profesor")){
+            Intent viewProfesor = new Intent(getApplicationContext(), LessonTeacherActivity.class);
+            startActivity(viewProfesor);
+        }
 
     }
 
     public void viewConversar(View button){
-        Intent viewDialog = new Intent(getApplicationContext(), LessonsActivity.class);
-        viewDialog.putExtra("option", 1);
-        startActivity(viewDialog);
+        String rol=SinSenaApp.getInstance().getROL();
+        if (rol.equals("Estudiante")) {
+            Intent viewDialog = new Intent(getApplicationContext(), LessonsActivity.class);
+            viewDialog.putExtra("option", 1);
+            startActivity(viewDialog);
+        }else if(rol.equals("Profesor")) {
+            Intent viewDialog = new Intent(getApplicationContext(), TeacherFeedbackActivity.class);
+            startActivity(viewDialog);
+        }
 
     }
 
@@ -59,7 +72,7 @@ public class MenuActivity extends AppCompatActivity {
         TextView titleAlert = v.findViewById(R.id.titleAlert);
         titleAlert.setText("Acerca de");
         TextView description =  v.findViewById(R.id.descriptionAlert);
-        description.setText(getText(R.string.Lorem));
+        description.setText(getText(R.string.acercaDe));
 
         btnVale.setOnClickListener(new View.OnClickListener() {
             @Override

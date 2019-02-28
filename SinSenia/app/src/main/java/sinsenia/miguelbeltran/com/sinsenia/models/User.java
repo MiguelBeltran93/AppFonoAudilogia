@@ -13,12 +13,15 @@ public class User implements Parcelable {
     private String nameUser;
     @SerializedName("ROL")
     private String rol;
+
     @SerializedName("CORREO")
     private String email;
+
 
     protected User(Parcel in) {
         id = in.readString();
         nameUser = in.readString();
+
         rol = in.readString();
         email = in.readString();
     }
@@ -67,6 +70,7 @@ public class User implements Parcelable {
         this.email = email;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -76,9 +80,8 @@ public class User implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(id);
         dest.writeString(nameUser);
+
         dest.writeString(rol);
         dest.writeString(email);
     }
-
-
 }

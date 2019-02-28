@@ -22,7 +22,7 @@ import sinsenia.miguelbeltran.com.sinsenia.models.Subject;
 
 public class ListSubjectAdapter extends RecyclerView.Adapter<ListSubjectAdapter.ListaViewHolder> {
 
-    private ArrayList<Object> listInfoSubject;
+    private ArrayList<Subject> listInfoSubject;
 
     @NonNull
     @Override
@@ -71,7 +71,7 @@ public class ListSubjectAdapter extends RecyclerView.Adapter<ListSubjectAdapter.
         }
     }
 
-   public  ListSubjectAdapter(ArrayList<Object> listInfoSubject){
+   public  ListSubjectAdapter(ArrayList<Subject> listInfoSubject){
         this.listInfoSubject = listInfoSubject;
     }
 }

@@ -8,5 +8,7 @@
     <string name="color">Color</string>
     <string name="clases">Clase</string>
     <string name="add_subject">Crear</string>
+    <string name="acercaDe">Sinseñaapp aplicación desarrollada con el fin de ayudar a estudiantes sordos a mejorar su experiencia académica. UPTC 2019.
+Cualquier duda o inquietud sinsenaapp@gmail.com.</string>
     <string name="Lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse euismod magna mi, vel vestibulum elit fermentum in.</string>
 </resources>

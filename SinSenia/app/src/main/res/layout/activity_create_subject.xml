@@ -87,6 +87,7 @@
         android:background="@drawable/custom_edit_text"
         android:drawableEnd="@drawable/icon_arrow_down"
         android:ems="12"
+        android:visibility="gone"
         android:gravity="center_vertical"
 
         android:hint="Profesor"
@@ -121,20 +122,41 @@
 
     <TextView
         android:id="@+id/textView7"
-        android:onClick="viewListSubject"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/custom_button"
         android:gravity="center"
+        android:onClick="CreateSubject"
         android:text="@string/add_subject"
         android:textColor="@color/gray_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/emailProfesor"
+        />
+
+    <EditText
+        android:id="@+id/emailProfesor"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/custom_edit_text"
+        android:ems="12"
+        android:gravity="center_vertical"
+        android:hint="Correo Profesor"
+        android:inputType="text"
+        android:textColor="@color/gray"
+        android:textColorHint="@color/gray"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        />
 
 
 </android.support.constraint.ConstraintLayout>
