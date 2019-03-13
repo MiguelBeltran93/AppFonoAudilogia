@@ -1,11 +1,13 @@
 package sinsenia.miguelbeltran.com.sinsenia;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,12 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -40,14 +48,18 @@ public class RegisterUserActivity extends AppCompatActivity {
     @BindView(R.id.switch2)
     Switch rolTeacher;
 
+    private FirebaseAuth mAuth;
+
 
     private User user;
+    private String emailUSer;
+    private String passwordUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
-
+        mAuth = FirebaseAuth.getInstance();
         ButterKnife.bind(this);
 
         int option = getIntent().getExtras().getInt("option");
@@ -67,22 +79,43 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
     }
 
+    public void registerUserFirebase(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            alertLogin();
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(getApplicationContext(),"Error al Registrarse",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+    }
+
+
+
     public void resgisterUser(View button){
         String n=name.getText().toString();
-        String c=password.getText().toString();
+        passwordUser=password.getText().toString();
        String r=null;
-        String em=email.getText().toString();
+        emailUSer=email.getText().toString();
 
         if (rolEstudent.isChecked()){
             r="Estudiante";
         }else if(rolTeacher.isChecked()){
             r="Profesor";
         }
-        RestAPI.getInstance().registerUser(n,c,r,em).enqueue(new Callback<String>() {
+        RestAPI.getInstance().registerUser(n,passwordUser,r,emailUSer).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
-                   alertLogin();
+
+                   registerUserFirebase(emailUSer,passwordUser);
                 }
             }
             @Override

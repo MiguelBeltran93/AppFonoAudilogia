@@ -14,7 +14,8 @@ public class LessonTeacherActivity extends AppCompatActivity {
     }
 
     public void viewFeedBack(View button){
-        Intent viewDialog = new Intent(getApplicationContext(), TeacherFeedbackActivity.class);
+        Intent viewDialog = new Intent(this, TeacherFeedbackActivity.class);
+        viewDialog.putExtra("option",3);
         startActivity(viewDialog);
 
     }

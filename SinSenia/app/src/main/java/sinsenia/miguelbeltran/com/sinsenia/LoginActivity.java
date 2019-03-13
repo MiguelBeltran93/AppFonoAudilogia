@@ -1,6 +1,7 @@
 package sinsenia.miguelbeltran.com.sinsenia;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 
@@ -31,12 +38,16 @@ public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.passwordUserLogin)
     EditText password;
 
+    private FirebaseAuth mAuth;
+    private String correo;
+    private String contrasena;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
+        mAuth = FirebaseAuth.getInstance();
         if(BuildConfig.DEBUG){
             email.setText("miguel.beltran01");
             password.setText("pruebanuevo");
@@ -44,10 +55,30 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void loginFirebase(){
+        mAuth.signInWithEmailAndPassword(correo, contrasena)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Intent viewMenu = new Intent(getApplicationContext(), MenuActivity.class);
+                            startActivity(viewMenu);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
     public void inicioSesion(View button){
 
-        String correo = email.getText().toString();
-        String contrasena= password.getText().toString();
+        correo = email.getText().toString();
+        contrasena= password.getText().toString();
 
         RestAPI.getInstance().login(correo,contrasena).enqueue(new Callback<Message>() {
             @Override
@@ -56,8 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                    Message idUser=response.body();
                     Toast.makeText(getApplicationContext(),idUser.getMessage(),Toast.LENGTH_SHORT).show();
-                        Intent viewMenu = new Intent(getApplicationContext(), MenuActivity.class);
-                        startActivity(viewMenu);
+                        loginFirebase();
                         SinSenaApp.getInstance().setToken(getApplicationContext(),idUser.getMessage(),idUser.getRol());
 
                 }

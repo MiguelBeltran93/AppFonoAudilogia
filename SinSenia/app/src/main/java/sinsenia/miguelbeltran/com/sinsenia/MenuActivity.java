@@ -40,6 +40,7 @@ public class MenuActivity extends AppCompatActivity {
             startActivity(viewDialog);
         }else if(rol.equals("Profesor")) {
             Intent viewDialog = new Intent(getApplicationContext(), TeacherFeedbackActivity.class);
+            viewDialog.putExtra("option", 1);
             startActivity(viewDialog);
         }
 
