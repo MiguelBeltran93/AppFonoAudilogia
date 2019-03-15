@@ -11,42 +11,54 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import sinsenia.miguelbeltran.com.sinsenia.models.SalaSubject;
 import sinsenia.miguelbeltran.com.sinsenia.models.SinSenaApp;
+import sinsenia.miguelbeltran.com.sinsenia.models.Subject;
 import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
 
 public class CreateSubjectActivity extends AppCompatActivity {
 
     @BindView(R.id.textView4)
-    EditText name;
-    @BindView(R.id.textView6)
-    EditText color;
-    @BindView(R.id.emailProfesor)
-    EditText email;
+    EditText nameSUbject;
+    @BindView(R.id.nombreProfesor)
+    EditText nameTeacher;
+
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReferenceSubjects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_subject);
         ButterKnife.bind(this);
+
+        database = FirebaseDatabase.getInstance();
+        databaseReferenceSubjects = database.getReference("Materias");
     }
 
     public void viewListSubject(){
-        Intent viewList = new Intent(getApplicationContext(), ListSubjectActivity.class);
-        startActivity(viewList);
-        finish();
+        onBackPressed();
     }
 
     public void CreateSubject(View button){
-        String nombre=name.getText().toString();
-        String colorMateria=color.getText().toString();
-        String em=email.getText().toString();
+        String nombre=nameSUbject.getText().toString();
+        String nombreProfesor=nameTeacher.getText().toString();
+        SalaSubject sala= new SalaSubject();
+        sala.setNameSubject(nombre);
+        sala.setNameTearcher(nombreProfesor);
+        databaseReferenceSubjects.push().setValue(sala);
+        alert();
 
-        RestAPI.getInstance().createSubject(SinSenaApp.getInstance().getID(),nombre,colorMateria,em).enqueue(new Callback<String>() {
+/*
+        RestAPI.getInstance().createSubject(SinSenaApp.getInstance().getID(),nombre,colorMateria,emailP).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
@@ -58,7 +70,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
             public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"fallo Registrado",Toast.LENGTH_LONG).show();
             }
-        });
+        });*/
     }
 
     public void alert(){

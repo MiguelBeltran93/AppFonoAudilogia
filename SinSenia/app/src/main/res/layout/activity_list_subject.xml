@@ -46,7 +46,7 @@
         app:srcCompat="@drawable/icon_back" />
 
         <ImageView
-            android:id="@+id/imageView14"
+            android:id="@+id/addSubjectIcon"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginTop="8dp"
@@ -66,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

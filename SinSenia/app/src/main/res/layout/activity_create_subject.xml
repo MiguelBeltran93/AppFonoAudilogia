@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
-    tools:context=".CreateSubjectActivity">
+    tools:context=".CreateSubjectActivity"
+    >
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/gray_light">
+        android:background="@color/gray_light"
+        >
 
 
         <TextView
@@ -22,7 +24,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/create_subject"
+            android:text="Crear Sala"
             android:textColor="@color/gray"
 
             android:textSize="20sp"
@@ -30,20 +32,22 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <ImageView
             android:id="@+id/imageView3"
-            android:onClick="onBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:onClick="onBack"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_back" />
+            app:srcCompat="@drawable/icon_back"
+            />
     </android.support.constraint.ConstraintLayout>
 
     <ImageView
@@ -56,7 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:srcCompat="@drawable/book" />
+        app:srcCompat="@drawable/book"
+        />
 
     <EditText
         android:id="@+id/textView4"
@@ -75,7 +80,8 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        />
 
     <EditText
         android:id="@+id/textView5"
@@ -87,17 +93,18 @@
         android:background="@drawable/custom_edit_text"
         android:drawableEnd="@drawable/icon_arrow_down"
         android:ems="12"
-        android:visibility="gone"
         android:gravity="center_vertical"
-
         android:hint="Profesor"
+
         android:inputType="text"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
         android:textSize="15sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        />
 
     <EditText
         android:id="@+id/textView6"
@@ -110,15 +117,16 @@
         android:drawableEnd="@drawable/icon_arrow_down"
         android:ems="12"
         android:gravity="center_vertical"
-
         android:hint="Color"
         android:inputType="text"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
         android:textSize="15sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        />
 
     <TextView
         android:id="@+id/textView7"
@@ -135,11 +143,11 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailProfesor"
+        app:layout_constraintTop_toBottomOf="@+id/nombreProfesor"
         />
 
     <EditText
-        android:id="@+id/emailProfesor"
+        android:id="@+id/nombreProfesor"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
@@ -148,7 +156,7 @@
         android:background="@drawable/custom_edit_text"
         android:ems="12"
         android:gravity="center_vertical"
-        android:hint="Correo Profesor"
+        android:hint="Nombre Profesor"
         android:inputType="text"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"

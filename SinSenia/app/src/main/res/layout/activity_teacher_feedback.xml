@@ -113,8 +113,8 @@
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -122,7 +122,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:onClick="voiceToText"
-            app:srcCompat="@drawable/ask" />
+            app:srcCompat="@drawable/icon_microphone" />
 
 
         <LinearLayout
@@ -145,6 +145,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/custom_edit_text"
                 android:textColor="@color/gray"
+                android:gravity="center_vertical"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp"
 

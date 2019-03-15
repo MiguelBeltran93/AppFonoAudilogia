@@ -26,7 +26,6 @@
         <activity android:name=".ListSubjectActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".TeacherFeedbackActivity" />
-        <activity android:name=".LessonTeacherActivity"></activity>
     </application>
 
 </manifest>

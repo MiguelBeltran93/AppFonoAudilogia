@@ -24,7 +24,9 @@ public class Manager {
         public void onInit(int status) {
             Locale spanish = new Locale("es", "ES");
             if (status == TextToSpeech.SUCCESS) {
+                mTts.setSpeechRate((float) 0.9);
                 int result = mTts.setLanguage(spanish);
+
                 isLoaded = true;
 
                 if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {

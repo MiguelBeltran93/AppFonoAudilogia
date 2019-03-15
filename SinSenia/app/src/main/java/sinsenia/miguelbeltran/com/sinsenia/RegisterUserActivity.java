@@ -22,6 +22,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import sinsenia.miguelbeltran.com.sinsenia.models.SinSenaApp;
 import sinsenia.miguelbeltran.com.sinsenia.models.User;
+import sinsenia.miguelbeltran.com.sinsenia.models.UserFirebase;
 import sinsenia.miguelbeltran.com.sinsenia.network.Responses;
 import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
 
@@ -49,17 +52,20 @@ public class RegisterUserActivity extends AppCompatActivity {
     Switch rolTeacher;
 
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
 
 
     private User user;
     private String emailUSer;
     private String passwordUser;
+    private String nameUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
         ButterKnife.bind(this);
 
         int option = getIntent().getExtras().getInt("option");
@@ -79,13 +85,19 @@ public class RegisterUserActivity extends AppCompatActivity {
         }
     }
 
-    public void registerUserFirebase(String email, String password){
+    public void registerUserFirebase(final String nameUser, final String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+                            UserFirebase user = new UserFirebase();
+                            user.setName(nameUser);
+                            user.setCorreo(email);
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            DatabaseReference reference = database.getReference("Usuarios/" + currentUser.getUid());
+                            reference.setValue(user);
                             alertLogin();
 
                         } else {
@@ -100,7 +112,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
 
     public void resgisterUser(View button){
-        String n=name.getText().toString();
+        nameUser =name.getText().toString();
         passwordUser=password.getText().toString();
        String r=null;
         emailUSer=email.getText().toString();
@@ -110,12 +122,12 @@ public class RegisterUserActivity extends AppCompatActivity {
         }else if(rolTeacher.isChecked()){
             r="Profesor";
         }
-        RestAPI.getInstance().registerUser(n,passwordUser,r,emailUSer).enqueue(new Callback<String>() {
+        RestAPI.getInstance().registerUser(nameUser,passwordUser,r,emailUSer).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
 
-                   registerUserFirebase(emailUSer,passwordUser);
+                   registerUserFirebase(nameUser,emailUSer,passwordUser);
                 }
             }
             @Override

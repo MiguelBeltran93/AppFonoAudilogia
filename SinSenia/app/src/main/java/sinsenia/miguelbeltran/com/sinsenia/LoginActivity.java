@@ -49,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
         if(BuildConfig.DEBUG){
-            email.setText("miguel.beltran01");
-            password.setText("pruebanuevo");
+            email.setText("miguel@gmail.com");
+            password.setText("123456");
         }
 
     }
@@ -180,5 +180,9 @@ public class LoginActivity extends AppCompatActivity {
         alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
 }

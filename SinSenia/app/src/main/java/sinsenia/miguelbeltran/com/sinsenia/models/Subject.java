@@ -79,4 +79,7 @@ public class Subject implements Parcelable {
         dest.writeString(correoProfesro);
         dest.writeString(color);
     }
+
+    public Subject() {
+    }
 }

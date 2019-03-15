@@ -39,14 +39,20 @@ public class TeacherFeedbackActivity extends AppCompatActivity {
 
     Manager manager= null;
     Handler handler=null;
-
+    String keySubject;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_feedback);
         ButterKnife.bind(this);
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("chat");//Sala de chat (nombre)
+        Bundle bundle = getIntent().getExtras();
+        if (!bundle.isEmpty()) {
+            keySubject = getIntent().getExtras().getString("key_subject");
+            databaseReference = database.getReference("Contenido"+"/"+keySubject);
+        }else{
+            finish();
+        }
         manager = new Manager();
         manager.init(this);
         int option = getIntent().getExtras().getInt("option");
@@ -63,7 +69,6 @@ public class TeacherFeedbackActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 reciveMesagge.setText("");
                 String message = (String) dataSnapshot.getValue();
-                String aux = s;
                 reciveMesagge.setText(message);
 
             }
@@ -105,10 +110,8 @@ public class TeacherFeedbackActivity extends AppCompatActivity {
     public void escucharMessage(View button){
 
         String message = reciveMesagge.getText().toString();
-
             manager.initQueue(message);
             reciveMesagge.setText("");
-        run();
     }
 
     public void sendMessage(View button){

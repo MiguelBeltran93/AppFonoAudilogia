@@ -24,10 +24,12 @@ public class MenuActivity extends AppCompatActivity {
         String rol=SinSenaApp.getInstance().getROL();
         if (rol.equals("Estudiante")) {
             Intent viewClass = new Intent(getApplicationContext(), ListSubjectActivity.class);
+            viewClass.putExtra("rol",1);
             startActivity(viewClass);
         }else if(rol.equals("Profesor")){
-            Intent viewProfesor = new Intent(getApplicationContext(), LessonTeacherActivity.class);
-            startActivity(viewProfesor);
+            Intent viewClass = new Intent(getApplicationContext(), ListSubjectActivity.class);
+            viewClass.putExtra("rol",2);
+            startActivity(viewClass);
         }
 
     }
