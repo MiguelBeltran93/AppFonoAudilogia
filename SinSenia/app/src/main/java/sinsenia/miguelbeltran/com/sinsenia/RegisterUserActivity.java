@@ -24,8 +24,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,14 +42,19 @@ import sinsenia.miguelbeltran.com.sinsenia.models.UserFirebase;
 import sinsenia.miguelbeltran.com.sinsenia.network.Responses;
 import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
 
-public class RegisterUserActivity extends AppCompatActivity {
-
+public class RegisterUserActivity extends AppCompatActivity implements Validator.ValidationListener  {
+    @NotEmpty(messageResId = R.string.name_empty)
     @BindView(R.id.nameUser)
     EditText name;
+
+    @NotEmpty(messageResId = R.string.email_empty)
     @BindView(R.id.correoUser)
     EditText email;
+
+    @NotEmpty(messageResId = R.string.password_empity)
     @BindView(R.id.passwordUser)
     EditText password;
+
     @BindView(R.id.Estudiante)
     Switch rolEstudent;
     @BindView(R.id.switch2)
@@ -60,6 +69,8 @@ public class RegisterUserActivity extends AppCompatActivity {
     private String passwordUser;
     private String nameUser;
 
+    Validator validator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +78,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ButterKnife.bind(this);
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
         int option = getIntent().getExtras().getInt("option");
         if(option==1){
@@ -111,7 +124,14 @@ public class RegisterUserActivity extends AppCompatActivity {
 
 
 
-    public void resgisterUser(View button){
+    public  void register(View button){
+        validator.validate();
+
+    }
+
+
+
+    public void registerUser(){
         nameUser =name.getText().toString();
         passwordUser=password.getText().toString();
        String r=null;
@@ -207,5 +227,21 @@ public class RegisterUserActivity extends AppCompatActivity {
         alertDialog.setView(v);
         alertDialog.show();
         alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        if(password.getText().toString().length() < 6){
+
+            Toast.makeText(getApplicationContext(),"La contraseña debe ser mayor a 6 caracteres",Toast.LENGTH_LONG).show();
+        }
+        else{
+            registerUser();
+        }
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        Toast.makeText(getApplicationContext(),errors.get(0).getCollatedErrorMessage(this),Toast.LENGTH_LONG).show();
     }
 }

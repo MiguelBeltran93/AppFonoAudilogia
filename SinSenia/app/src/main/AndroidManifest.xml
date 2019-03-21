@@ -6,26 +6,37 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_square_app"
+        android:icon="@mipmap/ic_launcher_square"
+
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_circle"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".RegisterUserActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".CreateSubjectActivity" />
-        <activity android:name=".LessonsActivity" />
-        <activity android:name=".ListSubjectActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".TeacherFeedbackActivity" />
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".RegisterUserActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreateSubjectActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LessonsActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ListSubjectActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TeacherFeedbackActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

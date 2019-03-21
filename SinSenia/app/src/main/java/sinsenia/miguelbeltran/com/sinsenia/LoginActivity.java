@@ -18,8 +18,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.IOException;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,9 +36,12 @@ import sinsenia.miguelbeltran.com.sinsenia.models.SinSenaApp;
 import sinsenia.miguelbeltran.com.sinsenia.models.User;
 import sinsenia.miguelbeltran.com.sinsenia.network.RestAPI;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Validator.ValidationListener {
+    @NotEmpty(messageResId = R.string.email_empty)
     @BindView(R.id.userEmailLogin)
     EditText email;
+
+    @NotEmpty(messageResId = R.string.password_empity)
     @BindView(R.id.passwordUserLogin)
     EditText password;
 
@@ -42,17 +49,24 @@ public class LoginActivity extends AppCompatActivity {
     private String correo;
     private String contrasena;
 
+
+    Validator validator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        mAuth = FirebaseAuth.getInstance();
-        if(BuildConfig.DEBUG){
-            email.setText("miguel@gmail.com");
-            password.setText("123456");
-        }
+        validator = new Validator(this);
+        validator.setValidationListener(this);
 
+        mAuth = FirebaseAuth.getInstance();
+
+
+    }
+
+    public void login(View button){
+        validator.validate();
     }
 
     public void loginFirebase(){
@@ -75,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    public void inicioSesion(View button){
+    public void inicioSesion(){
 
         correo = email.getText().toString();
         contrasena= password.getText().toString();
@@ -86,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                    Message idUser=response.body();
-                    Toast.makeText(getApplicationContext(),idUser.getMessage(),Toast.LENGTH_SHORT).show();
                         loginFirebase();
                         SinSenaApp.getInstance().setToken(getApplicationContext(),idUser.getMessage(),idUser.getRol());
 
@@ -101,6 +114,48 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void alertResetPassword(View button){
+        View v = LayoutInflater.from(this).inflate(R.layout.alert_reset_password, null);
+
+        final AlertDialog alertDialog = new AlertDialog.Builder(this, R.style.MyDialogTheme).create();
+
+
+        TextView btnVale =  v.findViewById(R.id.btnVale);
+        ImageView btnCancel =  v.findViewById(R.id.btnCancel);
+        final EditText email = v.findViewById(R.id.emailResetPassword);
+
+        btnVale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String emailUser=email.getText().toString();
+                mAuth.getInstance().sendPasswordResetEmail(emailUser)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    alertDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(),
+                                            "Se ha enviado un enlace a su cuenta de correo", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),
+                                            "Erro al enviar el mensaje", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.setView(v);
+        alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     public void alertLoginIncorrectInfo(){
@@ -185,4 +240,21 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
-}
+
+    @Override
+    public void onValidationSucceeded() {
+        if(password.getText().toString().length() < 6){
+
+            Toast.makeText(getApplicationContext(),"La contraseña debe ser mayor a 6 caracteres",Toast.LENGTH_LONG).show();
+        }
+        else{
+            inicioSesion();
+        }
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        Toast.makeText(getApplicationContext(),errors.get(0).getCollatedErrorMessage(this),Toast.LENGTH_LONG).show();
+    }
+    }
+

@@ -1,4 +1,8 @@
 <resources>
+
+    <string name="email_empty">El email no puede estar vacio</string>
+    <string name="name_empty">El nombre no puede estar vacio</string>
+    <string name="password_empity">La contraseña no puede estar vacio</string>
     <string name="app_name">SinSeña</string>
     <string name="register">Registro</string>
     <string name="Login">Inicar sesion</string>

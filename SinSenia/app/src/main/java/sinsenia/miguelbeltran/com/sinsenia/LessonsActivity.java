@@ -9,9 +9,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,6 +49,8 @@ LessonsActivity extends AppCompatActivity {
     EditText textSend;
     @BindView(R.id.textViewLesson)
     TextView titleText;
+    @BindView(R.id.shareClass)
+    ImageView shareInfo;
 
     Manager manager = null;
     String keySubject;
@@ -57,13 +61,18 @@ LessonsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessons);
         ButterKnife.bind(this);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         database = FirebaseDatabase.getInstance();
         manager = new Manager();
         manager.init(this);
+
         int option = getIntent().getExtras().getInt("option");
         Bundle bundle = getIntent().getExtras();
+        textVoice.setMovementMethod(new ScrollingMovementMethod());
+
 
         if (!bundle.isEmpty()) {
+            titleText.setText("Clase de "+getIntent().getExtras().getString("name_subject"));
             keySubject = getIntent().getExtras().getString("key_subject");
             databaseReference = database.getReference("Contenido"+"/"+keySubject);
         }else{
@@ -72,6 +81,8 @@ LessonsActivity extends AppCompatActivity {
 
         if (option == 1) {
             titleText.setText("Dialogar");
+            shareInfo.setVisibility(View.GONE);
+
         }
 
 
@@ -81,7 +92,7 @@ LessonsActivity extends AppCompatActivity {
                 if (titleText.getText().toString() != "Dialogar") {
 
                         String message = (String) dataSnapshot.getValue();
-                        infoClase = infoClase + " " + message;
+                        infoClase = infoClase + "\n" + message;
                         textVoice.setText(infoClase);
                 }
             }
@@ -145,6 +156,7 @@ LessonsActivity extends AppCompatActivity {
             MessageSend send= new MessageSend();
             send.setMessageSend(message);
             databaseReference.push().setValue(message);
+            textSend.setText("");
         }
     }
 
@@ -195,14 +207,14 @@ LessonsActivity extends AppCompatActivity {
         TextView titleAlert = v.findViewById(R.id.titleAlert);
         titleAlert.setText("INFORMACION");
         TextView description =  v.findViewById(R.id.descriptionAlert);
-        description.setText("Desea enviar esta clase \n a su correo o compartirla.");
+        description.setText("Desea enviar esta clase \n a su correo");
 
         btnVale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
                 shareInfo(v.getContext(),infoClase,"Clase",
-                        "Resumen","Error al compartir","Compartir");
+                        "Resumen","Error al enviar","Enviar Clase");
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {

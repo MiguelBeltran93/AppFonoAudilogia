@@ -35,16 +35,10 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void viewConversar(View button){
-        String rol=SinSenaApp.getInstance().getROL();
-        if (rol.equals("Estudiante")) {
             Intent viewDialog = new Intent(getApplicationContext(), LessonsActivity.class);
             viewDialog.putExtra("option", 1);
             startActivity(viewDialog);
-        }else if(rol.equals("Profesor")) {
-            Intent viewDialog = new Intent(getApplicationContext(), TeacherFeedbackActivity.class);
-            viewDialog.putExtra("option", 1);
-            startActivity(viewDialog);
-        }
+
 
     }
 

@@ -96,34 +96,40 @@ public class TeacherFeedbackActivity extends AppCompatActivity {
 
     }
 
-    public void run(){
+    public void run(View button){
+        handler = new Handler();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
+        final Runnable r = new Runnable() {
             public void run() {
-                Toast.makeText(getApplicationContext(),"kkakaka",Toast.LENGTH_LONG).show();
+
+                sendMessage();
+                handler.postDelayed(this, 2000);
             }
-        },5000);
+        };
+
+        handler.postDelayed(r, 2000);
+
 
     }
 
     public void escucharMessage(View button){
-
         String message = reciveMesagge.getText().toString();
+        if(!message.isEmpty()) {
             manager.initQueue(message);
             reciveMesagge.setText("");
+        }
     }
 
-    public void sendMessage(View button){
+    public void sendMessage(){
         String message = sendMessge.getText().toString();
-        databaseReference.push().setValue(message);
-        sendMessge.setText("");
+        if(!message.isEmpty()) {
+            databaseReference.push().setValue(message);
+            sendMessge.setText("");
+        }
     }
 
     public void onBack(View button){
-        Intent viewMenu = new Intent(getApplicationContext(), MenuActivity.class);
-        startActivity(viewMenu);
-        finish();
+      onBackPressed();
     }
 
     public void voiceToText(View button){

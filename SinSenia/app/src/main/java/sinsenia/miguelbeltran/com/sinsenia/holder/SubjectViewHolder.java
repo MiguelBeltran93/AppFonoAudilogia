@@ -4,6 +4,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -20,11 +21,14 @@ public class SubjectViewHolder extends ViewHolder {
 
     ConstraintLayout card;
 
+    ImageView itemDeletSubject;
+
     public SubjectViewHolder(View itemView) {
         super(itemView);
         nameSubject = itemView.findViewById(R.id.textViewsubject);
         nameTeacher = itemView.findViewById(R.id.nameteacher);
         card = itemView.findViewById(R.id.cardSubject);
+        itemDeletSubject = itemView.findViewById(R.id.iconDelete);
 
     }
 
@@ -50,5 +54,13 @@ public class SubjectViewHolder extends ViewHolder {
 
     public void setCard(ConstraintLayout card) {
         this.card = card;
+    }
+
+    public ImageView getItemDeletSubject() {
+        return itemDeletSubject;
+    }
+
+    public void setItemDeletSubject(ImageView itemDeletSubject) {
+        this.itemDeletSubject = itemDeletSubject;
     }
 }

@@ -66,7 +66,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="Correo"
         android:inputType="text"
         android:textColor="@color/gray"
         android:textColorHint="@color/gray"
@@ -112,6 +112,7 @@
         android:layout_marginEnd="8dp"
         android:text="olvide mi contraseña?"
         android:textColor="@color/gray_light"
+        android:onClick="alertResetPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textLayoutPassword" />
@@ -145,7 +146,7 @@
         android:text="@string/Login"
         android:textColor="@color/gray_light"
         android:textSize="18sp"
-        android:onClick="inicioSesion"
+        android:onClick="login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
